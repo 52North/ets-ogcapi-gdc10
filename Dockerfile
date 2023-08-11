@@ -35,7 +35,6 @@ ARG BUILD_DEPS=" \
     git \
 "
 COPY src /home/app/src
-COPY src1 /home/app/src1
 RUN apt-get update && \
     apt-get install -y $BUILD_DEPS && \
     echo "teamengine building..." && \
