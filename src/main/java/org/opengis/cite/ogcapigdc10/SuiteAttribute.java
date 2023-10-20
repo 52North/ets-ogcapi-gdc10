@@ -9,7 +9,8 @@ import com.reprezen.kaizen.oasparser.model3.OpenApi3;
 import com.sun.jersey.api.client.Client;
 
 /**
- * An enumerated type defining ISuite attributes that may be set to constitute a shared test fixture.
+ * An enumerated type defining ISuite attributes that may be set to constitute a
+ * shared test fixture.
  */
 @SuppressWarnings("rawtypes")
 public enum SuiteAttribute {
@@ -17,63 +18,66 @@ public enum SuiteAttribute {
     /**
      * A client component for interacting with HTTP endpoints.
      */
-    CLIENT( "httpClient", Client.class ),
+    CLIENT("httpClient", Client.class),
 
     /**
      * The root URL.
      */
-    IUT( "instanceUnderTest", URI.class ),
+    IUT("instanceUnderTest", URI.class),
 
     /**
      * A File containing the test subject or a description of it.
      */
-    TEST_SUBJ_FILE( "testSubjectFile", File.class ),
+    TEST_SUBJ_FILE("testSubjectFile", File.class),
 
     /**
      * The number of collections to test.
      */
-    NO_OF_COLLECTIONS( "noOfCollections", Integer.class ),
-    
+    NO_OF_COLLECTIONS("noOfCollections", Integer.class),
+
     /**
      * The id of the echo process.
      */
-    ECHO_PROCESS_ID( "echoProcessId", String.class ),
-    
-    /**
-     * Boolean indicating whether all processes should be tested against the OGC Process Description Conformance Class.
-     */
-    TEST_ALL_PROCESSES( "testAllProcesses", Boolean.class ),
+    ECHO_PROCESS_ID("echoProcessId", String.class),
 
     /**
-     * Number of processes that should be tested against the OGC Process Description Conformance Class.
+     * Boolean indicating whether all processes should be tested against the OGC
+     * Process Description Conformance Class.
      */
-    PROCESS_TEST_LIMIT( "processTestLimit", Integer.class ),
-    
+    TEST_ALL_PROCESSES("testAllProcesses", Boolean.class),
+
+    /**
+     * Number of processes that should be tested against the OGC Process
+     * Description Conformance Class.
+     */
+    PROCESS_TEST_LIMIT("processTestLimit", Integer.class),
+
     /**
      * Parsed OpenApi3 document resource /api; Added during execution.
      */
-    API_MODEL( "apiModel", OpenApi3.class ),
+    API_MODEL("apiModel", OpenApi3.class),
 
     /**
      * Requirement classes parsed from /conformance; Added during execution.
      */
-    REQUIREMENTCLASSES( "requirementclasses", List.class ),
+    REQUIREMENTCLASSES("requirementclasses", List.class),
 
     /**
      * Parsed collections from resource /collections; Added during execution.
      */
-    COLLECTIONS( "collections", List.class ),
+    COLLECTIONS("collections", List.class),
 
     /**
-     * Collection names assigned to a feature id parsed from resource /collections/{name}/items; Added during execution.
+     * Collection names assigned to a feature id parsed from resource
+     * /collections/{name}/items; Added during execution.
      */
-    FEATUREIDS( "featureIds", Map.class );
+    FEATUREIDS("featureIds", Map.class);
 
     private final Class attrType;
 
     private final String attrName;
 
-    SuiteAttribute( String attrName, Class attrType ) {
+    SuiteAttribute(String attrName, Class attrType) {
         this.attrName = attrName;
         this.attrType = attrType;
     }
@@ -88,8 +92,8 @@ public enum SuiteAttribute {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder( attrName );
-        sb.append( '(' ).append( attrType.getName() ).append( ')' );
+        StringBuilder sb = new StringBuilder(attrName);
+        sb.append('(').append(attrType.getName()).append(')');
         return sb.toString();
     }
 }

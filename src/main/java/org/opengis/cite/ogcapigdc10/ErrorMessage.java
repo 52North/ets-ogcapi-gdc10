@@ -9,10 +9,9 @@ import java.util.ResourceBundle;
  */
 public class ErrorMessage {
 
-    private static final String BASE_NAME =
-            "org.opengis.cite.ogcapigdc10.MessageBundle";
-    private static ResourceBundle msgResources =
-            ResourceBundle.getBundle(BASE_NAME);
+    private static final String BASE_NAME = "org.opengis.cite.ogcapigdc10.MessageBundle";
+
+    private static ResourceBundle msgResources = ResourceBundle.getBundle(BASE_NAME);
 
     /**
      * Produces a formatted error message using the supplied substitution
@@ -29,7 +28,8 @@ public class ErrorMessage {
      *         for the given key, a {@link java.util.MissingResourceException}
      *         is thrown.
      */
-    public static String format(String msgKey, Object... args) {
+    public static String format(String msgKey,
+            Object... args) {
         return MessageFormat.format(msgResources.getString(msgKey), args);
     }
 

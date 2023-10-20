@@ -1,3 +1,0 @@
-[submodule "src1"]
-	path = src1
-	url = https://github.com/opengeospatial/ets-ogcapi-processes10.git

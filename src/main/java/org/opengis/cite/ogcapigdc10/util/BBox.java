@@ -30,7 +30,7 @@ public class BBox {
      * @param maxY
      *            Upper right corner, coordinate axis 2
      */
-    public BBox( double minX, double minY, double maxX, double maxY ) {
+    public BBox(double minX, double minY, double maxX, double maxY) {
         this.minX = minX;
         this.minY = minY;
         this.maxX = maxX;
@@ -43,10 +43,10 @@ public class BBox {
     public String asQueryParameter() {
         StringBuilder sb = new StringBuilder();
         DecimalFormat formatter = formatter();
-        sb.append( formatter.format( minX ) ).append( "," );
-        sb.append( formatter.format( minY ) ).append( "," );
-        sb.append( formatter.format( maxX ) ).append( "," );
-        sb.append( formatter.format( maxY ) );
+        sb.append(formatter.format(minX)).append(",");
+        sb.append(formatter.format(minY)).append(",");
+        sb.append(formatter.format(maxX)).append(",");
+        sb.append(formatter.format(maxY));
         return sb.toString();
     }
 
@@ -56,25 +56,25 @@ public class BBox {
     }
 
     @Override
-    public boolean equals( Object o ) {
-        if ( this == o )
+    public boolean equals(Object o) {
+        if (this == o)
             return true;
-        if ( o == null || getClass() != o.getClass() )
+        if (o == null || getClass() != o.getClass())
             return false;
         BBox bBox = (BBox) o;
-        return Double.compare( bBox.minX, minX ) == 0 && Double.compare( bBox.minY, minY ) == 0
-               && Double.compare( bBox.maxX, maxX ) == 0 && Double.compare( bBox.maxY, maxY ) == 0;
+        return Double.compare(bBox.minX, minX) == 0 && Double.compare(bBox.minY, minY) == 0
+                && Double.compare(bBox.maxX, maxX) == 0 && Double.compare(bBox.maxY, maxY) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( minX, minY, maxX, maxY );
+        return Objects.hash(minX, minY, maxX, maxY);
     }
 
     private DecimalFormat formatter() {
-        NumberFormat nf = NumberFormat.getNumberInstance( Locale.ENGLISH );
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.ENGLISH);
         DecimalFormat df = (DecimalFormat) nf;
-        df.applyPattern( PATTERN );
+        df.applyPattern(PATTERN);
         return df;
     }
 

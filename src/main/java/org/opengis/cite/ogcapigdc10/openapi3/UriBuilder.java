@@ -21,9 +21,9 @@ public class UriBuilder {
      * @param testPoint
      *            never <code>null</code>
      */
-    public UriBuilder( TestPoint testPoint ) {
+    public UriBuilder(TestPoint testPoint) {
         this.testPoint = testPoint;
-        this.templateReplacements.putAll( testPoint.getPredefinedTemplateReplacement() );
+        this.templateReplacements.putAll(testPoint.getPredefinedTemplateReplacement());
     }
 
     /**
@@ -33,9 +33,9 @@ public class UriBuilder {
      *            never <code>null</code>
      * @return this UrlBuilder
      */
-    public UriBuilder collectionName( String collectionName ) {
+    public UriBuilder collectionName(String collectionName) {
         String templateName = retrieveCollectionNameTemplateName();
-        addTemplateReplacement( collectionName, templateName );
+        addTemplateReplacement(collectionName, templateName);
         return this;
     }
 
@@ -46,9 +46,9 @@ public class UriBuilder {
      *            never <code>null</code>
      * @return this UrlBuilder
      */
-    public UriBuilder featureId( String featureId ) {
+    public UriBuilder featureId(String featureId) {
         String templateName = retrieveFeatureIdTemplateName();
-        addTemplateReplacement( featureId, templateName );
+        addTemplateReplacement(featureId, templateName);
         return this;
     }
 
@@ -56,20 +56,21 @@ public class UriBuilder {
      * @return this URI, never <code>null</code>
      */
     public String buildUrl() {
-        UriTemplate uriTemplate = new UriTemplate( testPoint.getServerUrl() + testPoint.getPath() );
-        return uriTemplate.createURI( templateReplacements );
+        UriTemplate uriTemplate = new UriTemplate(testPoint.getServerUrl() + testPoint.getPath());
+        return uriTemplate.createURI(templateReplacements);
     }
 
-    private void addTemplateReplacement( String collectionName, String templateName ) {
-        if ( templateName != null )
-            templateReplacements.put( templateName, collectionName );
+    private void addTemplateReplacement(String collectionName,
+            String templateName) {
+        if (templateName != null)
+            templateReplacements.put(templateName, collectionName);
     }
 
     private String retrieveCollectionNameTemplateName() {
         String path = testPoint.getPath();
-        UriTemplateParser uriTemplateParser = new UriTemplateParser( path );
-        for ( String templateName : uriTemplateParser.getNames() ) {
-            if ( path.startsWith( "/collections/{" + templateName + "}" ) )
+        UriTemplateParser uriTemplateParser = new UriTemplateParser(path);
+        for (String templateName : uriTemplateParser.getNames()) {
+            if (path.startsWith("/collections/{" + templateName + "}"))
                 return templateName;
         }
         return null;
@@ -77,9 +78,9 @@ public class UriBuilder {
 
     private String retrieveFeatureIdTemplateName() {
         String path = testPoint.getPath();
-        UriTemplateParser uriTemplateParser = new UriTemplateParser( path );
-        for ( String templateName : uriTemplateParser.getNames() ) {
-            if ( path.endsWith( "items/{" + templateName + "}" ) )
+        UriTemplateParser uriTemplateParser = new UriTemplateParser(path);
+        for (String templateName : uriTemplateParser.getNames()) {
+            if (path.endsWith("items/{" + templateName + "}"))
                 return templateName;
         }
         return null;

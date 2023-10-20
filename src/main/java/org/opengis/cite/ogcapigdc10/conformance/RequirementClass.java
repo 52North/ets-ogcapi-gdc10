@@ -9,9 +9,7 @@ package org.opengis.cite.ogcapigdc10.conformance;
  */
 public enum RequirementClass {
 
-    CORE( "http://www.opengis.net/spec/ogcapi-processes-1/1.0/conf/core" );
-
-
+    CORE("http://www.opengis.net/spec/ogcapi-processes-1/1.0/conf/core");
 
     private final String conformanceClass;
 
@@ -19,34 +17,35 @@ public enum RequirementClass {
 
     private final String mediaTypeOtherResources;
 
-    RequirementClass( String conformanceClass ) {
-        this( conformanceClass, null, null );
+    RequirementClass(String conformanceClass) {
+        this(conformanceClass, null, null);
     }
 
-    RequirementClass( String conformanceClass, String mediaTypeFeaturesAndCollections, String mediaTypeOtherResources ) {
+    RequirementClass(String conformanceClass, String mediaTypeFeaturesAndCollections, String mediaTypeOtherResources) {
         this.conformanceClass = conformanceClass;
         this.mediaTypeFeaturesAndCollections = mediaTypeFeaturesAndCollections;
         this.mediaTypeOtherResources = mediaTypeOtherResources;
     }
 
     /**
-     * @return <code>true</code> if the RequirementClass has a media type for features and collections,
-     *         <code>true</code> otherwise
+     * @return <code>true</code> if the RequirementClass has a media type for
+     *         features and collections, <code>true</code> otherwise
      */
     public boolean hasMediaTypeForFeaturesAndCollections() {
         return mediaTypeFeaturesAndCollections != null;
     }
 
     /**
-     * @return media type for features and collections, <code>null</code> if not available
+     * @return media type for features and collections, <code>null</code> if not
+     *         available
      */
     public String getMediaTypeFeaturesAndCollections() {
         return mediaTypeFeaturesAndCollections;
     }
 
     /**
-     * @return <code>true</code> if the RequirementClass has a media type for other resources,
-     *         <code>true</code> otherwise
+     * @return <code>true</code> if the RequirementClass has a media type for
+     *         other resources, <code>true</code> otherwise
      */
     public boolean hasMediaTypeForOtherResources() {
         return mediaTypeOtherResources != null;
@@ -62,11 +61,12 @@ public enum RequirementClass {
     /**
      * @param conformanceClass
      *            the conformance class of the RequirementClass to return.
-     * @return the RequirementClass with the passed conformance class, <code>null</code> if RequirementClass exists
+     * @return the RequirementClass with the passed conformance class,
+     *         <code>null</code> if RequirementClass exists
      */
-    public static RequirementClass byConformanceClass( String conformanceClass ) {
-        for ( RequirementClass requirementClass : values() ) {
-            if ( requirementClass.conformanceClass.equals( conformanceClass ) )
+    public static RequirementClass byConformanceClass(String conformanceClass) {
+        for (RequirementClass requirementClass : values()) {
+            if (requirementClass.conformanceClass.equals(conformanceClass))
                 return requirementClass;
         }
         return null;

@@ -44,10 +44,8 @@ public class ClientUtils {
      */
     public static Client buildClient() {
         ClientConfig config = new DefaultClientConfig();
-        config.getProperties().put(
-                ClientConfig.PROPERTY_FOLLOW_REDIRECTS, true);
-        config.getProperties().put(
-                ClientConfig.PROPERTY_CONNECT_TIMEOUT, 10000);
+        config.getProperties().put(ClientConfig.PROPERTY_FOLLOW_REDIRECTS, true);
+        config.getProperties().put(ClientConfig.PROPERTY_CONNECT_TIMEOUT, 10000);
         Client client = Client.create(config);
         client.addFilter(new ReusableEntityFilter());
         client.addFilter(new LoggingFilter());
@@ -59,26 +57,27 @@ public class ClientUtils {
      * authentication is not supported. Configuring the client to use an
      * intercepting proxy can be useful when debugging a test.
      *
-     * @param proxyHost The host name or IP address of the proxy server.
-     * @param proxyPort The port number of the proxy listener.
+     * @param proxyHost
+     *            The host name or IP address of the proxy server.
+     * @param proxyPort
+     *            The port number of the proxy listener.
      *
      * @return A Client component that submits requests through a web proxy.
      */
     public static Client buildClientWithProxy(final String proxyHost,
             final int proxyPort) {
         ClientConfig config = new DefaultClientConfig();
-        config.getProperties().put(
-                ClientConfig.PROPERTY_FOLLOW_REDIRECTS, true);
-        Client client = new Client(new URLConnectionClientHandler(
-                new HttpURLConnectionFactory() {
-                    SocketAddress addr = new InetSocketAddress(proxyHost, proxyPort);
-                    Proxy proxy = new Proxy(Proxy.Type.HTTP, addr);
+        config.getProperties().put(ClientConfig.PROPERTY_FOLLOW_REDIRECTS, true);
+        Client client = new Client(new URLConnectionClientHandler(new HttpURLConnectionFactory() {
+            SocketAddress addr = new InetSocketAddress(proxyHost, proxyPort);
 
-                    @Override
-                    public HttpURLConnection getHttpURLConnection(URL url) throws IOException {
-                        return (HttpURLConnection) url.openConnection(proxy);
-                    }
-                }), config);
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, addr);
+
+            @Override
+            public HttpURLConnection getHttpURLConnection(URL url) throws IOException {
+                return (HttpURLConnection) url.openConnection(proxy);
+            }
+        }), config);
         client.addFilter(new LoggingFilter());
         return client;
     }
@@ -86,15 +85,19 @@ public class ClientUtils {
     /**
      * Builds an HTTP request message that uses the GET method.
      *
-     * @param endpoint A URI indicating the target resource.
-     * @param qryParams A Map containing query parameters (may be null);
-     * @param mediaTypes A list of acceptable media types; if not specified,
-     * generic XML ("application/xml") is preferred.
+     * @param endpoint
+     *            A URI indicating the target resource.
+     * @param qryParams
+     *            A Map containing query parameters (may be null);
+     * @param mediaTypes
+     *            A list of acceptable media types; if not specified, generic
+     *            XML ("application/xml") is preferred.
      *
      * @return A ClientRequest object.
      */
     public static ClientRequest buildGetRequest(URI endpoint,
-            Map<String, String> qryParams, MediaType... mediaTypes) {
+            Map<String, String> qryParams,
+            MediaType... mediaTypes) {
         UriBuilder uriBuilder = UriBuilder.fromUri(endpoint);
         if (null != qryParams) {
             for (Map.Entry<String, String> param : qryParams.entrySet()) {
@@ -115,9 +118,10 @@ public class ClientUtils {
     /**
      * Creates a copy of the given MediaType object but without any parameters.
      *
-     * @param mediaType A MediaType descriptor.
+     * @param mediaType
+     *            A MediaType descriptor.
      * @return A new (immutable) MediaType object having the same type and
-     * subtype.
+     *         subtype.
      */
     public static MediaType removeParameters(MediaType mediaType) {
         return new MediaType(mediaType.getType(), mediaType.getSubtype());
@@ -127,12 +131,14 @@ public class ClientUtils {
      * Obtains the (XML) response entity as a JAXP Source object and resets the
      * entity input stream for subsequent reads.
      *
-     * @param response A representation of an HTTP response message.
-     * @param targetURI The target URI from which the entity was retrieved (may
-     * be null).
+     * @param response
+     *            A representation of an HTTP response message.
+     * @param targetURI
+     *            The target URI from which the entity was retrieved (may be
+     *            null).
      * @return A Source to read the entity from; its system identifier is set
-     * using the given targetURI value (this may be used to resolve any relative
-     * URIs found in the source).
+     *         using the given targetURI value (this may be used to resolve any
+     *         relative URIs found in the source).
      */
     public static Source getResponseEntityAsSource(ClientResponse response,
             String targetURI) {
@@ -145,8 +151,8 @@ public class ClientUtils {
                 // NOTE: entity was buffered by client filter
                 response.getEntityInputStream().reset();
             } catch (IOException ex) {
-                Logger.getLogger(ClientUtils.class.getName()).log(Level.WARNING,
-                        "Failed to reset response entity.", ex);
+                Logger.getLogger(ClientUtils.class.getName()).log(Level.WARNING, "Failed to reset response entity.",
+                        ex);
             }
         }
         return source;
@@ -156,17 +162,18 @@ public class ClientUtils {
      * Obtains the (XML) response entity as a DOM Document and resets the entity
      * input stream for subsequent reads.
      *
-     * @param response A representation of an HTTP response message.
-     * @param targetURI The target URI from which the entity was retrieved (may
-     * be null).
+     * @param response
+     *            A representation of an HTTP response message.
+     * @param targetURI
+     *            The target URI from which the entity was retrieved (may be
+     *            null).
      * @return A Document representing the entity; its base URI is set using the
-     * given targetURI value (this may be used to resolve any relative URIs
-     * found in the document).
+     *         given targetURI value (this may be used to resolve any relative
+     *         URIs found in the document).
      */
     public static Document getResponseEntityAsDocument(ClientResponse response,
             String targetURI) {
-        DOMSource domSource = (DOMSource) getResponseEntityAsSource(response,
-                targetURI);
+        DOMSource domSource = (DOMSource) getResponseEntityAsSource(response, targetURI);
         Document entityDoc = (Document) domSource.getNode();
         entityDoc.setDocumentURI(domSource.getSystemId());
         return entityDoc;

@@ -25,7 +25,8 @@ public class TestFailureListener extends TestListenerAdapter {
      * headers, entity (if present). The entity is represented as a String with
      * UTF-8 character encoding.
      *
-     * @param result A description of a test result (with a fail verdict).
+     * @param result
+     *            A description of a test result (with a fail verdict).
      */
     @Override
     public void onTestFailure(ITestResult result) {
@@ -43,7 +44,8 @@ public class TestFailureListener extends TestListenerAdapter {
      * contains a message body, it should be represented as a DOM Document node
      * or as an object having a meaningful toString() implementation.
      *
-     * @param req An object representing an HTTP request message.
+     * @param req
+     *            An object representing an HTTP request message.
      * @return A string containing information gleaned from the request message.
      */
     String getRequestMessageInfo(ClientRequest req) {
@@ -71,9 +73,10 @@ public class TestFailureListener extends TestListenerAdapter {
     /**
      * Gets diagnostic information about a response message.
      *
-     * @param rsp An object representing an HTTP response message.
+     * @param rsp
+     *            An object representing an HTTP response message.
      * @return A string containing information gleaned from the response
-     * message.
+     *         message.
      */
     String getResponseMessageInfo(ClientResponse rsp) {
         if (null == rsp) {

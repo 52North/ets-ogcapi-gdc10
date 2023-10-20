@@ -49,7 +49,8 @@ public class NamespaceBindings implements NamespaceContext {
      * @param prefix
      *            A prefix associated with the namespace name.
      */
-    public void addNamespaceBinding(String namespaceURI, String prefix) {
+    public void addNamespaceBinding(String namespaceURI,
+            String prefix) {
         bindings.put(namespaceURI, prefix);
     }
 

@@ -22,17 +22,19 @@ public class TestPoint {
     private Map<String, MediaType> contentMediaTypes;
 
     /**
-     * Instantiates a TestPoint with UriTemplate but without predefined replacements.
+     * Instantiates a TestPoint with UriTemplate but without predefined
+     * replacements.
      *
      * @param serverUrl
      *            the serverUrl, never <code>null</code>
      * @param path
      *            the path never, <code>null</code>
      * @param contentMediaTypes
-     *            the content media types for the GET operation with response "200", may be <code>null</code>
+     *            the content media types for the GET operation with response
+     *            "200", may be <code>null</code>
      */
-    public TestPoint( String serverUrl, String path, Map<String, MediaType> contentMediaTypes ) {
-        this( serverUrl, path, Collections.emptyMap(), contentMediaTypes );
+    public TestPoint(String serverUrl, String path, Map<String, MediaType> contentMediaTypes) {
+        this(serverUrl, path, Collections.emptyMap(), contentMediaTypes);
     }
 
     /**
@@ -45,13 +47,14 @@ public class TestPoint {
      * @param predefinedTemplateReplacement
      *            a list of predefined replacements never <code>null</code>
      * @param contentMediaTypes
-     *            the content media types for the GET operation with response "200", may be <code>null</code>
+     *            the content media types for the GET operation with response
+     *            "200", may be <code>null</code>
      */
-    public TestPoint( String serverUrl, String path, Map<String, String> predefinedTemplateReplacement,
-                      Map<String, MediaType> contentMediaTypes ) {
+    public TestPoint(String serverUrl, String path, Map<String, String> predefinedTemplateReplacement,
+            Map<String, MediaType> contentMediaTypes) {
         this.serverUrl = serverUrl;
         this.path = path;
-        this.predefinedTemplateReplacement = Collections.unmodifiableMap( predefinedTemplateReplacement );
+        this.predefinedTemplateReplacement = Collections.unmodifiableMap(predefinedTemplateReplacement);
         this.contentMediaTypes = contentMediaTypes;
     }
 
@@ -71,14 +74,16 @@ public class TestPoint {
     }
 
     /**
-     * @return an unmodifiable mao with predefined replacements, may be empty but never <code>null</code>
+     * @return an unmodifiable mao with predefined replacements, may be empty
+     *         but never <code>null</code>
      */
     public Map<String, String> getPredefinedTemplateReplacement() {
         return predefinedTemplateReplacement;
     }
 
     /**
-     * @return the content media types for the GET operation with response "200", may be <code>null</code>
+     * @return the content media types for the GET operation with response
+     *         "200", may be <code>null</code>
      */
     public Map<String, MediaType> getContentMediaTypes() {
         return contentMediaTypes;
@@ -90,21 +95,21 @@ public class TestPoint {
     }
 
     @Override
-    public boolean equals( Object o ) {
-        if ( this == o )
+    public boolean equals(Object o) {
+        if (this == o)
             return true;
-        if ( o == null || getClass() != o.getClass() )
+        if (o == null || getClass() != o.getClass())
             return false;
         TestPoint testPoint = (TestPoint) o;
-        return Objects.equals( serverUrl, testPoint.serverUrl )
-               && Objects.equals( path, testPoint.predefinedTemplateReplacement )
-               && Objects.equals( predefinedTemplateReplacement, testPoint.path )
-               && Objects.equals( contentMediaTypes, testPoint.contentMediaTypes );
+        return Objects.equals(serverUrl, testPoint.serverUrl)
+                && Objects.equals(path, testPoint.predefinedTemplateReplacement)
+                && Objects.equals(predefinedTemplateReplacement, testPoint.path)
+                && Objects.equals(contentMediaTypes, testPoint.contentMediaTypes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( serverUrl, path, predefinedTemplateReplacement, contentMediaTypes );
+        return Objects.hash(serverUrl, path, predefinedTemplateReplacement, contentMediaTypes);
     }
 
 }

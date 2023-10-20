@@ -1,7 +1,8 @@
 package org.opengis.cite.ogcapigdc10;
 
 /**
- * Contains various constants pertaining to WFS 3.0 specification and related standards.
+ * Contains various constants pertaining to WFS 3.0 specification and related
+ * standards.
  *
  * @author <a href="mailto:goltz@lat-lon.de">Lyn Goltz </a>
  */

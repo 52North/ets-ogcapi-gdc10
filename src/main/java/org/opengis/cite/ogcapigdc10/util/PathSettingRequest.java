@@ -11,63 +11,69 @@ import org.openapi4j.operation.validator.model.Request;
 import org.openapi4j.operation.validator.model.impl.Body;
 
 public class PathSettingRequest implements Request {
-	private final String url;
-	private final Method method;
-	private final String path;
-	private final Map<String, String> cookies;
-//	private final Map<String, Collection<String>> headers;
+    private final String url;
+
+    private final Method method;
+
+    private final String path;
+
+    private final Map<String, String> cookies;
+
+    // private final Map<String, Collection<String>> headers;
     private final MultiStringMap<String> headers;
-	private final String query;
-	private final Body body;
 
-	public PathSettingRequest(String url, String path, Method method) {
-		this.url = requireNonNull(url, "A URL is required");
-		this.method = requireNonNull(method, "A method is required");
-		this.path = path;
-		this.query = "";
-		this.body = null;
-		this.cookies = new HashMap<>();
-		this.headers = new MultiStringMap<>(false);
-	}
+    private final String query;
 
-	@Override
-	public String getURL() {
-		return url;
-	}
+    private final Body body;
 
-	@Override
-	public String getPath() {
-		return path;
-	}
+    public PathSettingRequest(String url, String path, Method method) {
+        this.url = requireNonNull(url, "A URL is required");
+        this.method = requireNonNull(method, "A method is required");
+        this.path = path;
+        this.query = "";
+        this.body = null;
+        this.cookies = new HashMap<>();
+        this.headers = new MultiStringMap<>(false);
+    }
 
-	@Override
-	public Method getMethod() {
-		return method;
-	}
+    @Override
+    public String getURL() {
+        return url;
+    }
 
-	@Override
-	public Body getBody() {
-		return body;
-	}
+    @Override
+    public String getPath() {
+        return path;
+    }
 
-	@Override
-	public String getQuery() {
-		return query;
-	}
+    @Override
+    public Method getMethod() {
+        return method;
+    }
 
-	@Override
-	public Map<String, String> getCookies() {
-		return cookies;
-	}
+    @Override
+    public Body getBody() {
+        return body;
+    }
 
-	@Override
-	public Map<String, Collection<String>> getHeaders() {
-		return headers.asUnmodifiableMap();
-	}
+    @Override
+    public String getQuery() {
+        return query;
+    }
 
-	@Override
-	public Collection<String> getHeaderValues(String name) {
-		return headers.get(name);
-	}
+    @Override
+    public Map<String, String> getCookies() {
+        return cookies;
+    }
+
+    @Override
+    public Map<String, Collection<String>> getHeaders() {
+        return headers.asUnmodifiableMap();
+    }
+
+    @Override
+    public Collection<String> getHeaderValues(String name) {
+        return headers.get(name);
+    }
 
 }

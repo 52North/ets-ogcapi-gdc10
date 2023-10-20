@@ -11,7 +11,7 @@ public class TemporalExtent {
 
     private ZonedDateTime end;
 
-    public TemporalExtent( ZonedDateTime begin, ZonedDateTime end ) {
+    public TemporalExtent(ZonedDateTime begin, ZonedDateTime end) {
         this.begin = begin;
         this.end = end;
     }

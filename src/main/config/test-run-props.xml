@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+  <comment>Sample test run arguments (ets-ogcapi-gdc10)</comment>
+  <entry key="iut">https://dev.openeo.eurac.edu</entry>
+  <entry key="echoprocessid">echo</entry>
+  <entry key="testallprocesses">false</entry>
+  <entry key="processtestlimit">1</entry>
+  <entry key="acceptMediaType">application/zip</entry>
+</properties>
