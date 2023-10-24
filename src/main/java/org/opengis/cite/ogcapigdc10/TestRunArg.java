@@ -32,7 +32,22 @@ public enum TestRunArg {
      * Boolean indicating whether all processes should be tested against the OGC
      * Process Description Conformance Class.
      */
-    TESTALLPROCESSES;
+    TESTALLPROCESSES,
+
+    /**
+     * The Basic Auth user name.
+     */
+    USERNAME,
+
+    /**
+     * The Basic Auth password.
+     */
+    PASSWORD,
+
+    /**
+     * The process graph.
+     */
+    PROCESSGRAPH;
 
     @Override
     public String toString() {

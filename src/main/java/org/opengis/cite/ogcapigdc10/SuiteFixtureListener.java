@@ -61,6 +61,7 @@ public class SuiteFixtureListener implements ISuiteListener {
         }
         URI iutRef = URI.create(iutParam.trim());
         suite.setAttribute(SuiteAttribute.IUT.getName(), iutRef);
+        // suite.setAttribute(SuiteAttribute.TESTOAPIP.getName(), true);
         File entityFile = null;
         try {
             entityFile = URIUtils.dereferenceURI(iutRef);
@@ -104,6 +105,39 @@ public class SuiteFixtureListener implements ISuiteListener {
             TestSuiteLogger.log(Level.WARNING,
                     String.format("Could not parse parameter %s: %s. Expected is a valid string",
                             TestRunArg.ECHOPROCESSID.toString(), echoProcessId));
+        }
+
+        String userName = params.get(TestRunArg.USERNAME.toString());
+        try {
+            if (userName != null) {
+                suite.setAttribute(SuiteAttribute.USER_NAME.getName(), userName);
+            }
+        } catch (NumberFormatException e) {
+            TestSuiteLogger.log(Level.WARNING,
+                    String.format("Could not parse parameter %s: %s. Expected is a valid string",
+                            TestRunArg.USERNAME.toString(), userName));
+        }
+
+        String password = params.get(TestRunArg.PASSWORD.toString());
+        try {
+            if (password != null) {
+                suite.setAttribute(SuiteAttribute.PASSWORD.getName(), password);
+            }
+        } catch (NumberFormatException e) {
+            TestSuiteLogger.log(Level.WARNING,
+                    String.format("Could not parse parameter %s: %s. Expected is a valid string",
+                            TestRunArg.PASSWORD.toString(), password));
+        }
+
+        String processGraph = params.get(TestRunArg.PROCESSGRAPH.toString());
+        try {
+            if (processGraph != null) {
+                suite.setAttribute(SuiteAttribute.PROCESSGRAPH.getName(), processGraph);
+            }
+        } catch (NumberFormatException e) {
+            TestSuiteLogger.log(Level.WARNING,
+                    String.format("Could not parse parameter %s: %s. Expected is a valid string",
+                            TestRunArg.PROCESSGRAPH.toString(), processGraph));
         }
     }
 

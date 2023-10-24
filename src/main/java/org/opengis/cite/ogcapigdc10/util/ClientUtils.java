@@ -1,5 +1,9 @@
 package org.opengis.cite.ogcapigdc10.util;
 
+import static io.restassured.http.ContentType.JSON;
+import static io.restassured.http.Method.GET;
+import static org.testng.Assert.assertTrue;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
@@ -15,6 +19,10 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.client.urlconnection.HttpURLConnectionFactory;
 import com.sun.jersey.client.urlconnection.URLConnectionClientHandler;
+
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
 import java.net.URI;
 import java.util.Map;
 import java.util.logging.Level;
@@ -25,7 +33,18 @@ import javax.ws.rs.core.UriBuilder;
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMSource;
 
+import org.apache.http.HttpHeaders;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.opengis.cite.ogcapigdc10.ReusableEntityFilter;
+import org.opengis.cite.ogcapigdc10.SuiteAttribute;
+import org.testng.Assert;
+import org.testng.ITestContext;
 import org.w3c.dom.Document;
 
 /**
@@ -177,5 +196,45 @@ public class ClientUtils {
         Document entityDoc = (Document) domSource.getNode();
         entityDoc.setDocumentURI(domSource.getSystemId());
         return entityDoc;
+    }
+    
+
+    
+    public static void getRequestWithBearerToken(ITestContext testContext,
+            String endpoint) {
+        String token = (String) testContext.getSuite().getAttribute(SuiteAttribute.TOKEN.getName());
+
+        final HttpGet request = new HttpGet(endpoint);
+
+        final String authHeader = "Bearer basic//" + token;
+        request.setHeader(HttpHeaders.AUTHORIZATION, authHeader);
+        
+        try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
+
+            CloseableHttpResponse response = client.execute(request, new ResponseHandler<CloseableHttpResponse>() {
+
+                @Override
+                public CloseableHttpResponse handleResponse(HttpResponse arg0)
+                        throws ClientProtocolException, IOException {
+                    return (CloseableHttpResponse) arg0;
+                }
+            });
+
+            assertTrue(response.getStatusLine().getStatusCode() == 200,
+                    endpoint + " returned " + response.getStatusLine().getStatusCode());
+
+        } catch (IOException e) {
+            Assert.fail(e.getMessage());
+        }
+    }
+    
+    public static Response getRequestWithBearerToken2(ITestContext testContext,
+            String endpoint,
+            RequestSpecification requestSpecification) {
+        String token = (String) testContext.getSuite().getAttribute(SuiteAttribute.TOKEN.getName());
+        final String authHeader = "Bearer basic//" + token;
+        Response response = requestSpecification.header(HttpHeaders.AUTHORIZATION, authHeader).request(GET);
+        assertTrue(response.getStatusCode() == 200, endpoint + " returned " + response.getStatusCode());
+        return response;
     }
 }

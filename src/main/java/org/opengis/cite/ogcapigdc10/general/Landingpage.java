@@ -1,14 +1,15 @@
-package org.opengis.cite.ogcapigdc10.openeo;
+package org.opengis.cite.ogcapigdc10.general;
 
 import static io.restassured.http.Method.GET;
 import static org.testng.Assert.assertTrue;
 
 import org.opengis.cite.ogcapigdc10.CommonFixture;
+import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
 import io.restassured.response.Response;
 
-public class OpenEO extends CommonFixture {
+public class Landingpage extends CommonFixture {
 
     @Test(
             description = "Test root endpoint")

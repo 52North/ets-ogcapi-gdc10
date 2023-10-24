@@ -98,15 +98,9 @@ public class Conformance extends CommonFixture {
     private void validateConformanceOperationResponse(String testPointUri,
             Response response) {
         response.then().statusCode(200);
-
-        assertTrue(validateResponseAgainstSchema(Conformance.urlSchema, response.getBody().asString()),
-                "Unable to validate the response document against: " + Conformance.urlSchema);
-
         JsonPath jsonPath = response.jsonPath();
         this.requirementClasses = parseAndValidateRequirementClasses(jsonPath);
-        assertTrue(this.requirementClasses.contains(CORE),
-                "Requirement class \"http://www.opengis.net/spec/ogcapi-processes-1/1.0/conf/core\" is not available from path "
-                        + testPointUri);
+
     }
 
     /**

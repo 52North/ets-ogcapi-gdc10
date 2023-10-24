@@ -72,6 +72,21 @@
                 <input type="number" id="processTestLimit" name="processTestLimit" value="3"/>
               </div>
             </p>
+            <p>
+              <h4 style="margin-bottom: 0.5em">Basic Auth credentials</h4>
+              <div>
+                <label for="userName">User name for Basic Auth</label>
+                <input type="text" id="userName" name="userName" value="user"/>
+              </div>
+              <div>
+                <label for="password">Password for Basic Auth</label>
+                <input type="password" id="password" name="password" value="password"/>
+              </div>
+              <div style="  display: flex; align-items: center;">
+                <label for="processgraph">Process graph</label>
+                <textarea id="processgraph" name="processgraph" rows="30" cols="70">Process graph</textarea>
+              </div>
+            </p>
           </fieldset>
           <p>
             <input class="form-button" type="submit" value="Start" />
@@ -90,6 +105,15 @@
           </entry>
           <entry key="processtestlimit">
               <xsl:value-of select="$form-data/values/value[@key='processTestLimit']" />
+          </entry>
+          <entry key="username">
+              <xsl:value-of select="$form-data/values/value[@key='userName']" />
+          </entry>
+          <entry key="password">
+              <xsl:value-of select="$form-data/values/value[@key='password']" />
+          </entry>
+          <entry key="processgraph">
+              <xsl:value-of select="$form-data/values/value[@key='processgraph']" />
           </entry>
         </properties>
       </xsl:variable>

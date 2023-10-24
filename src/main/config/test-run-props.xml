@@ -2,9 +2,15 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties version="1.0">
   <comment>Sample test run arguments (ets-ogcapi-gdc10)</comment>
-  <entry key="iut">https://dev.openeo.eurac.edu</entry>
+  <entry key="iut">https://testbed19.rasdaman.com/rasdaman/gdc</entry>  
+  <entry key="username">benjaminpross</entry>
+  <entry key="password">p16nDJd51g9LrJD0QhK3</entry>
+  <entry key="iut">https://dev.openeo.eurac.edu</entry> 
+   <entry key="username">guest</entry>
+  <entry key="password">changeme</entry>
   <entry key="echoprocessid">echo</entry>
   <entry key="testallprocesses">false</entry>
   <entry key="processtestlimit">1</entry>
   <entry key="acceptMediaType">application/zip</entry>
+
 </properties>

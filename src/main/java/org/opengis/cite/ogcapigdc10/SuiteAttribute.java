@@ -68,6 +68,32 @@ public enum SuiteAttribute {
     COLLECTIONS("collections", List.class),
 
     /**
+     * User name.
+     */
+    USER_NAME("userName", String.class),
+
+    /**
+     * Basic auth token.
+     */
+    TOKEN("token", String.class),
+
+    /**
+     * Password.
+     */
+    PASSWORD("password", String.class),
+
+    /**
+     * Process graph.
+     */
+    PROCESSGRAPH("processgraph", String.class),
+
+    /**
+     * Internal, used to exclude OGC API - Processes test, if only OpenEO
+     * processing is supported.
+     */
+    TESTOAPIP("testoapip", Boolean.class),
+
+    /**
      * Collection names assigned to a feature id parsed from resource
      * /collections/{name}/items; Added during execution.
      */

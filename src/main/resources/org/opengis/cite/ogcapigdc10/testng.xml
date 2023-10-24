@@ -8,65 +8,73 @@
     <listener class-name="org.opengis.cite.ogcapigdc10.TestRunListener" />
     <listener class-name="org.opengis.cite.ogcapigdc10.SuiteFixtureListener" />
     <listener class-name="org.opengis.cite.ogcapigdc10.TestFailureListener" />
+    <listener class-name="org.opengis.cite.ogcapigdc10.TestListener" />
   </listeners>
 
-<!--   <test name="Core"> -->
-<!--     <packages> -->
-<!--       <package name="org.opengis.cite.ogcapigdc10.general"/> -->
-<!--       <package name="org.opengis.cite.ogcapigdc10.landingpage" /> -->
-<!--       <package name="org.opengis.cite.ogcapigdc10.conformance" /> -->
-<!--     </packages> -->
-<!--     <classes> -->
-<!--       <class name="org.opengis.cite.ogcapigdc10.SuitePreconditions" /> -->
-<!--     </classes> -->
-<!--   </test> -->
+  <test name="Capabilities">
+    <packages>
+      <package name="org.opengis.cite.ogcapigdc10.general"/>
+      <package name="org.opengis.cite.ogcapigdc10.landingpage" />
+      <package name="org.opengis.cite.ogcapigdc10.conformance" />
+    </packages>
+    <classes>
+      <class name="org.opengis.cite.ogcapigdc10.SuitePreconditions" />
+    </classes>
+  </test>
   
-<!--   <test name="Processes Core"> -->
-<!--     <packages>   -->
-<!--       <package name="org.opengis.cite.ogcapiprocesses10.process" /> -->
-<!--       <package name="org.opengis.cite.ogcapiprocesses10.jobs" /> -->
-<!--     </packages> -->
-<!--     <classes> -->
-<!--       <class name="org.opengis.cite.ogcapiprocesses10.SuitePreconditions" /> -->
-<!--     </classes> -->
-<!--   </test> -->
-
-<!--   <test name="Coverages Core"> -->
-<!--     <packages> -->
-<!--       <package name="org.opengis.cite.ogcapicoverages10.collections" />       -->
-<!--     </packages> -->
-<!--     <classes> -->
-<!--       <class name="org.opengis.cite.ogcapicoverages10.SuitePreconditions" /> -->
-<!--     </classes> -->
-<!--   </test> -->
-
-<!--   <test name="Features Core"> -->
-<!--     <packages> -->
-<!--       <package name="org.opengis.cite.ogcapifeatures10.conformance.core.general" /> -->
-<!--       <package name="org.opengis.cite.ogcapifeatures10.conformance.core.landingpage" /> -->
-<!--       <package name="org.opengis.cite.ogcapifeatures10.conformance.core.apidefinition" /> -->
-<!--       <package name="org.opengis.cite.ogcapifeatures10.conformance.core.conformance" /> -->
-<!--       <package name="org.opengis.cite.ogcapifeatures10.conformance.core.collections" /> -->
-<!--     </packages> -->
-<!--     <classes> -->
-<!--       <class name="org.opengis.cite.ogcapifeatures10.conformance.SuitePreconditions" /> -->
-<!--     </classes> -->
-<!--   </test> -->
-
-<!--   <test name="Features Coordinate Reference Systems by Reference"> -->
-<!--     <packages> -->
-<!--       <package name="org.opengis.cite.ogcapifeatures10.conformance.crs" /> -->
-<!--       <package name="org.opengis.cite.ogcapifeatures10.conformance.crs.discovery.collection" /> -->
-<!--       <package name="org.opengis.cite.ogcapifeatures10.conformance.crs.discovery.collections" /> -->
-<!--       <package name="org.opengis.cite.ogcapifeatures10.conformance.crs.query.crs.features" /> -->
-<!--       <package name="org.opengis.cite.ogcapifeatures10.conformance.crs.query.crs.feature" /> -->
-<!--       <package name="org.opengis.cite.ogcapifeatures10.conformance.crs.query.bboxcrs" /> -->
-<!--     </packages> -->
-<!--   </test> -->
+  <test name="Account Management">
+    <packages>
+      <package name="org.opengis.cite.ogcapigdc10.authentication" />
+    </packages>
+  </test>
+  
+  <test name="Data Discovery/Access">
+    <packages>
+      <package name="org.opengis.cite.ogcapigdc10.datadiscovery" />
+    </packages>
+  </test>
+  
+  <test name="Process Discovery">
+    <packages>
+      <package name="org.opengis.cite.ogcapigdc10.processdiscovery" />
+    </packages>
+  </test>
 
   <test name="OpenEO">
     <packages>
       <package name="org.opengis.cite.ogcapigdc10.openeo" />
+    </packages>
+    <classes>
+      <class name="org.opengis.cite.ogcapifeatures10.conformance.SuitePreconditions" />
+    </classes>
+  </test>
+  
+  <test name="OGC API - Processes">
+    <packages> 
+      <package name="org.opengis.cite.ogcapiprocesses10.process" />
+      <package name="org.opengis.cite.ogcapiprocesses10.jobs" />
+    </packages>
+    <classes>
+      <class name="org.opengis.cite.ogcapigdc10.SuitePreconditionsOAPIP" />
+    </classes>
+  </test>
+
+  <test name="Coverages Core">
+    <packages>
+      <package name="org.opengis.cite.ogcapicoverages10.collections" /> 
+    </packages>
+    <classes>
+      <class name="org.opengis.cite.ogcapicoverages10.SuitePreconditions" />
+    </classes>
+  </test>
+
+  <test name="Features Core">
+    <packages>
+      <package name="org.opengis.cite.ogcapifeatures10.conformance.core.general" />
+      <package name="org.opengis.cite.ogcapifeatures10.conformance.core.landingpage" />
+      <package name="org.opengis.cite.ogcapifeatures10.conformance.core.apidefinition" />
+      <package name="org.opengis.cite.ogcapifeatures10.conformance.core.conformance" />
+      <package name="org.opengis.cite.ogcapifeatures10.conformance.core.collections" />
     </packages>
     <classes>
       <class name="org.opengis.cite.ogcapifeatures10.conformance.SuitePreconditions" />
